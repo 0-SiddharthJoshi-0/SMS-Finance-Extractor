@@ -178,4 +178,4 @@ For support, questions, or feedback:
 
 ---
 
-**Built with ❤️ using crewAI and Google Gemini**
+**Built with using crewAI**

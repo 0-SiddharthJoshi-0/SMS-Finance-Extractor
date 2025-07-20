@@ -1,0 +1,21 @@
+read_csv_task:
+  description: >
+    Read the TransactionMemo.csv file from the knowledge folder and return the raw tool output only. Do not summarize, transform, or process the data with the LLM.
+  expected_output: >
+    The raw list of dictionaries from the CSV file, as returned by the tool. No LLM processing, summary, or transformation.
+  agent: csv_reader
+  args:
+    filepath: knowledge/TransactionMemo.csv
+    tool_only: True
+  
+
+ner_task:
+  description: >
+    For each SMS entry, use the NERTool to extract Amount, Currency, Credit_or_Debit, AccoutNo, Balance, and Location, and add the Date column from the original data. Write results to SMS_NER.json.
+  expected_output: >
+    A JSON file (SMS_NER.json) with columns: ID, Date, Amount, Currency, Credit_or_Debit, AccoutNo, Balance, Location.
+  agent: ner
+  args:
+    data: "{{read_csv_task}}"
+    output_json: SMS_NER.json
+    tool_only: True

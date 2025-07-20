@@ -1,0 +1,25 @@
+[project]
+name = "sms-finance-extractor"
+version = "0.1.0"
+description = "AI-powered SMS transaction analyzer using crewAI and Google Gemini"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "crewai[tools]>=0.130.0,<1.0.0",
+    "pandas>=2.0.0,<3.0.0",
+    "openpyxl>=3.1.0,<4.0.0"
+]
+
+[project.scripts]
+crewbank = "crewbank.main:run"
+run_crew = "crewbank.main:run"
+train = "crewbank.main:train"
+replay = "crewbank.main:replay"
+test = "crewbank.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"
